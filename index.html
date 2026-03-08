@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Aniversário, Natalia 🌸</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --rose: #f2a7b8;
+        --deep-rose: #c9647f;
+        --blush: #fce8ef;
+        --cream: #fdf6f0;
+        --gold: #e8c87a;
+        --dark: #2a1a20;
+        --petal: #f7cdd8;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--cream);
+        font-family: "Cormorant Garamond", serif;
+        color: var(--dark);
+        cursor: none;
+      }
+
+      #cursor {
+        position: fixed;
+        width: 18px;
+        height: 18px;
+        background: var(--rose);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s ease;
+        mix-blend-mode: multiply;
+      }
+
+      .bg {
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(ellipse at 20% 30%, #fce0ea 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 70%, #fde8f4 0%, transparent 50%),
+          radial-gradient(ellipse at 50% 50%, #fdf6f0 0%, transparent 80%);
+        z-index: 0;
+      }
+
+      canvas {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* ── Corner roses ── */
+      .corner-rose {
+        position: fixed;
+        z-index: 5;
+        pointer-events: none;
+        opacity: 0;
+        animation: roseAppear 1.8s ease forwards;
+      }
+      .corner-rose svg {
+        display: block;
+      }
+
+      .corner-rose.tl {
+        top: -10px;
+        left: -10px;
+        transform: rotate(0deg);
+        animation-delay: 2s;
+      }
+      .corner-rose.tr {
+        top: -10px;
+        right: -10px;
+        transform: rotate(90deg);
+        animation-delay: 2.2s;
+      }
+      .corner-rose.bl {
+        bottom: -10px;
+        left: -10px;
+        transform: rotate(270deg);
+        animation-delay: 2.4s;
+      }
+      .corner-rose.br {
+        bottom: -10px;
+        right: -10px;
+        transform: rotate(180deg);
+        animation-delay: 2.6s;
+      }
+
+      @keyframes roseAppear {
+        from {
+          opacity: 0;
+          transform: scale(0.7) rotate(var(--r, 0deg));
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) rotate(var(--r, 0deg));
+        }
+      }
+      .corner-rose.tl {
+        --r: 0deg;
+      }
+      .corner-rose.tr {
+        --r: 90deg;
+      }
+      .corner-rose.bl {
+        --r: 270deg;
+      }
+      .corner-rose.br {
+        --r: 180deg;
+      }
+
+      /* ── Falling roses ── */
+      .falling-rose {
+        position: fixed;
+        pointer-events: none;
+        z-index: 3;
+        opacity: 0;
+        animation: fallRose linear infinite;
+      }
+      @keyframes fallRose {
+        0% {
+          opacity: 0;
+          transform: translateY(-60px) rotate(0deg);
+        }
+        8% {
+          opacity: 0.85;
+        }
+        90% {
+          opacity: 0.7;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(110vh) rotate(360deg);
+        }
+      }
+
+      .container {
+        position: relative;
+        z-index: 10;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid var(--rose);
+        opacity: 0;
+        animation: expandRing 4s ease-out forwards;
+      }
+      .ring:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        animation-delay: 0.5s;
+      }
+      .ring:nth-child(2) {
+        width: 450px;
+        height: 450px;
+        animation-delay: 1s;
+      }
+      .ring:nth-child(3) {
+        width: 600px;
+        height: 600px;
+        animation-delay: 1.5s;
+      }
+      @keyframes expandRing {
+        0% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        50% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 0.08;
+          transform: scale(1);
+        }
+      }
+
+      .gold-line {
+        width: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 1.2rem auto;
+        animation: growLine 1.5s ease forwards;
+        animation-delay: 1.5s;
+      }
+      @keyframes growLine {
+        to {
+          width: 200px;
+        }
+      }
+
+      .pre-title {
+        font-size: clamp(0.75rem, 2vw, 0.9rem);
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: #c90842;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards;
+        animation-delay: 0.6s;
+      }
+
+      .main-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 9vw, 7rem);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--dark);
+        opacity: 0;
+        animation: fadeUp 1.2s ease forwards;
+        animation-delay: 1s;
+        position: relative;
+      }
+      .main-title span {
+        color: var(--deep-rose);
+        font-style: italic;
+      }
+
+      .name {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 8vw, 6rem);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--deep-rose);
+        opacity: 0;
+        animation: fadeUp 1.2s ease forwards;
+        animation-delay: 1.4s;
+        text-shadow: 0 2px 30px rgba(201, 100, 127, 0.2);
+      }
+
+      .message {
+        max-width: 520px;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        font-style: italic;
+        font-weight: 700;
+        line-height: 1.9;
+        color: #5e0b26;
+        opacity: 0;
+        animation: fadeUp 1.2s ease forwards;
+        animation-delay: 2s;
+        margin-top: 0.5rem;
+      }
+
+      .hearts {
+        display: flex;
+        gap: 1rem;
+        font-size: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards;
+        animation-delay: 2.5s;
+        margin-top: 0.5rem;
+      }
+      .heart {
+        display: inline-block;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
+      .heart:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .heart:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.25);
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        font-size: 1rem;
+        animation: floatSparkle linear infinite;
+        opacity: 0;
+        z-index: 2;
+      }
+      @keyframes floatSparkle {
+        0% {
+          opacity: 0;
+          transform: translateY(0) rotate(0deg);
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-100vh) rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <div class="bg"></div>
+    <canvas id="petals"></canvas>
+
+    <!-- Corner roses (SVG inline) -->
+    <div class="corner-rose tl">
+      <svg
+        width="180"
+        height="180"
+        viewBox="0 0 180 180"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- stem -->
+        <path
+          d="M30 170 Q50 130 70 100"
+          stroke="#7a9e6e"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"
+        />
+        <!-- leaf left -->
+        <path
+          d="M45 148 Q30 128 50 118 Q55 138 45 148Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <!-- leaf right -->
+        <path
+          d="M58 130 Q75 112 80 128 Q65 135 58 130Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <!-- rose petals outer -->
+        <ellipse
+          cx="72"
+          cy="92"
+          rx="18"
+          ry="12"
+          fill="#e8899a"
+          opacity="0.7"
+          transform="rotate(-30 72 92)"
+        />
+        <ellipse
+          cx="88"
+          cy="82"
+          rx="18"
+          ry="12"
+          fill="#e8899a"
+          opacity="0.7"
+          transform="rotate(20 88 82)"
+        />
+        <ellipse
+          cx="95"
+          cy="98"
+          rx="18"
+          ry="12"
+          fill="#df7a8e"
+          opacity="0.7"
+          transform="rotate(80 95 98)"
+        />
+        <ellipse
+          cx="78"
+          cy="108"
+          rx="18"
+          ry="12"
+          fill="#df7a8e"
+          opacity="0.7"
+          transform="rotate(130 78 108)"
+        />
+        <ellipse
+          cx="62"
+          cy="100"
+          rx="18"
+          ry="12"
+          fill="#e8899a"
+          opacity="0.7"
+          transform="rotate(200 62 100)"
+        />
+        <!-- rose petals mid -->
+        <ellipse
+          cx="75"
+          cy="90"
+          rx="13"
+          ry="9"
+          fill="#f2a7b8"
+          opacity="0.85"
+          transform="rotate(-10 75 90)"
+        />
+        <ellipse
+          cx="88"
+          cy="88"
+          rx="13"
+          ry="9"
+          fill="#f2a7b8"
+          opacity="0.85"
+          transform="rotate(50 88 88)"
+        />
+        <ellipse
+          cx="87"
+          cy="101"
+          rx="13"
+          ry="9"
+          fill="#eda0b2"
+          opacity="0.85"
+          transform="rotate(110 87 101)"
+        />
+        <ellipse
+          cx="74"
+          cy="103"
+          rx="13"
+          ry="9"
+          fill="#eda0b2"
+          opacity="0.85"
+          transform="rotate(170 74 103)"
+        />
+        <!-- rose centre -->
+        <ellipse cx="80" cy="95" rx="10" ry="8" fill="#f7cdd8" />
+        <ellipse cx="80" cy="95" rx="6" ry="5" fill="#fce8ef" />
+        <ellipse cx="80" cy="94" rx="3" ry="2.5" fill="#e8899a" />
+      </svg>
+    </div>
+
+    <div class="corner-rose tr">
+      <svg
+        width="180"
+        height="180"
+        viewBox="0 0 180 180"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M30 170 Q50 130 70 100"
+          stroke="#7a9e6e"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"
+        />
+        <path
+          d="M45 148 Q30 128 50 118 Q55 138 45 148Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <path
+          d="M58 130 Q75 112 80 128 Q65 135 58 130Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <ellipse
+          cx="72"
+          cy="92"
+          rx="18"
+          ry="12"
+          fill="#c9647f"
+          opacity="0.7"
+          transform="rotate(-30 72 92)"
+        />
+        <ellipse
+          cx="88"
+          cy="82"
+          rx="18"
+          ry="12"
+          fill="#c9647f"
+          opacity="0.7"
+          transform="rotate(20 88 82)"
+        />
+        <ellipse
+          cx="95"
+          cy="98"
+          rx="18"
+          ry="12"
+          fill="#b8556f"
+          opacity="0.7"
+          transform="rotate(80 95 98)"
+        />
+        <ellipse
+          cx="78"
+          cy="108"
+          rx="18"
+          ry="12"
+          fill="#b8556f"
+          opacity="0.7"
+          transform="rotate(130 78 108)"
+        />
+        <ellipse
+          cx="62"
+          cy="100"
+          rx="18"
+          ry="12"
+          fill="#c9647f"
+          opacity="0.7"
+          transform="rotate(200 62 100)"
+        />
+        <ellipse
+          cx="75"
+          cy="90"
+          rx="13"
+          ry="9"
+          fill="#df8fa0"
+          opacity="0.85"
+          transform="rotate(-10 75 90)"
+        />
+        <ellipse
+          cx="88"
+          cy="88"
+          rx="13"
+          ry="9"
+          fill="#df8fa0"
+          opacity="0.85"
+          transform="rotate(50 88 88)"
+        />
+        <ellipse
+          cx="87"
+          cy="101"
+          rx="13"
+          ry="9"
+          fill="#d07f93"
+          opacity="0.85"
+          transform="rotate(110 87 101)"
+        />
+        <ellipse
+          cx="74"
+          cy="103"
+          rx="13"
+          ry="9"
+          fill="#d07f93"
+          opacity="0.85"
+          transform="rotate(170 74 103)"
+        />
+        <ellipse cx="80" cy="95" rx="10" ry="8" fill="#f2a7b8" />
+        <ellipse cx="80" cy="95" rx="6" ry="5" fill="#fce8ef" />
+        <ellipse cx="80" cy="94" rx="3" ry="2.5" fill="#c9647f" />
+      </svg>
+    </div>
+
+    <div class="corner-rose bl">
+      <svg
+        width="180"
+        height="180"
+        viewBox="0 0 180 180"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M30 170 Q50 130 70 100"
+          stroke="#7a9e6e"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"
+        />
+        <path
+          d="M45 148 Q30 128 50 118 Q55 138 45 148Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <path
+          d="M58 130 Q75 112 80 128 Q65 135 58 130Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <ellipse
+          cx="72"
+          cy="92"
+          rx="18"
+          ry="12"
+          fill="#e8899a"
+          opacity="0.7"
+          transform="rotate(-30 72 92)"
+        />
+        <ellipse
+          cx="88"
+          cy="82"
+          rx="18"
+          ry="12"
+          fill="#e8899a"
+          opacity="0.7"
+          transform="rotate(20 88 82)"
+        />
+        <ellipse
+          cx="95"
+          cy="98"
+          rx="18"
+          ry="12"
+          fill="#df7a8e"
+          opacity="0.7"
+          transform="rotate(80 95 98)"
+        />
+        <ellipse
+          cx="78"
+          cy="108"
+          rx="18"
+          ry="12"
+          fill="#df7a8e"
+          opacity="0.7"
+          transform="rotate(130 78 108)"
+        />
+        <ellipse
+          cx="62"
+          cy="100"
+          rx="18"
+          ry="12"
+          fill="#e8899a"
+          opacity="0.7"
+          transform="rotate(200 62 100)"
+        />
+        <ellipse
+          cx="75"
+          cy="90"
+          rx="13"
+          ry="9"
+          fill="#f2a7b8"
+          opacity="0.85"
+          transform="rotate(-10 75 90)"
+        />
+        <ellipse
+          cx="88"
+          cy="88"
+          rx="13"
+          ry="9"
+          fill="#f2a7b8"
+          opacity="0.85"
+          transform="rotate(50 88 88)"
+        />
+        <ellipse
+          cx="87"
+          cy="101"
+          rx="13"
+          ry="9"
+          fill="#eda0b2"
+          opacity="0.85"
+          transform="rotate(110 87 101)"
+        />
+        <ellipse
+          cx="74"
+          cy="103"
+          rx="13"
+          ry="9"
+          fill="#eda0b2"
+          opacity="0.85"
+          transform="rotate(170 74 103)"
+        />
+        <ellipse cx="80" cy="95" rx="10" ry="8" fill="#f7cdd8" />
+        <ellipse cx="80" cy="95" rx="6" ry="5" fill="#fce8ef" />
+        <ellipse cx="80" cy="94" rx="3" ry="2.5" fill="#e8899a" />
+      </svg>
+    </div>
+
+    <div class="corner-rose br">
+      <svg
+        width="180"
+        height="180"
+        viewBox="0 0 180 180"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M30 170 Q50 130 70 100"
+          stroke="#7a9e6e"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"
+        />
+        <path
+          d="M45 148 Q30 128 50 118 Q55 138 45 148Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <path
+          d="M58 130 Q75 112 80 128 Q65 135 58 130Z"
+          fill="#8fb87e"
+          opacity="0.85"
+        />
+        <ellipse
+          cx="72"
+          cy="92"
+          rx="18"
+          ry="12"
+          fill="#c9647f"
+          opacity="0.7"
+          transform="rotate(-30 72 92)"
+        />
+        <ellipse
+          cx="88"
+          cy="82"
+          rx="18"
+          ry="12"
+          fill="#c9647f"
+          opacity="0.7"
+          transform="rotate(20 88 82)"
+        />
+        <ellipse
+          cx="95"
+          cy="98"
+          rx="18"
+          ry="12"
+          fill="#b8556f"
+          opacity="0.7"
+          transform="rotate(80 95 98)"
+        />
+        <ellipse
+          cx="78"
+          cy="108"
+          rx="18"
+          ry="12"
+          fill="#b8556f"
+          opacity="0.7"
+          transform="rotate(130 78 108)"
+        />
+        <ellipse
+          cx="62"
+          cy="100"
+          rx="18"
+          ry="12"
+          fill="#c9647f"
+          opacity="0.7"
+          transform="rotate(200 62 100)"
+        />
+        <ellipse
+          cx="75"
+          cy="90"
+          rx="13"
+          ry="9"
+          fill="#df8fa0"
+          opacity="0.85"
+          transform="rotate(-10 75 90)"
+        />
+        <ellipse
+          cx="88"
+          cy="88"
+          rx="13"
+          ry="9"
+          fill="#df8fa0"
+          opacity="0.85"
+          transform="rotate(50 88 88)"
+        />
+        <ellipse
+          cx="87"
+          cy="101"
+          rx="13"
+          ry="9"
+          fill="#d07f93"
+          opacity="0.85"
+          transform="rotate(110 87 101)"
+        />
+        <ellipse
+          cx="74"
+          cy="103"
+          rx="13"
+          ry="9"
+          fill="#d07f93"
+          opacity="0.85"
+          transform="rotate(170 74 103)"
+        />
+        <ellipse cx="80" cy="95" rx="10" ry="8" fill="#f2a7b8" />
+        <ellipse cx="80" cy="95" rx="6" ry="5" fill="#fce8ef" />
+        <ellipse cx="80" cy="94" rx="3" ry="2.5" fill="#c9647f" />
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+
+      <p class="pre-title">✦ para a menina mais linda ✦</p>
+      <div class="gold-line"></div>
+
+      <h1 class="main-title">Feliz<br /><span>Aniversário</span></h1>
+      <div class="gold-line" style="animation-delay: 2s"></div>
+      <h2 class="name">Natalia</h2>
+
+      <p class="message">
+        <strong
+          >Que hoje e sempre a vida te envolva em tudo que você merece —<br />
+          amor, alegria, leveza e muita luz.<br />
+          Você ilumina o mundo só por existir.🌸</strong
+        >
+      </p>
+
+      <div class="hearts">
+        <span class="heart">🌹</span>
+        <span class="heart">💖</span>
+        <span class="heart">🌹</span>
+      </div>
+    </div>
+
+    <script>
+      // Cursor
+      const cursor = document.getElementById("cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+
+      // Petal canvas
+      const canvas = document.getElementById("petals");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      const petalColors = [
+        "#f7cdd8",
+        "#f2a7b8",
+        "#fce0ea",
+        "#e8c87a",
+        "#fde8f4",
+      ];
+      const petals = Array.from({ length: 60 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        r: 4 + Math.random() * 8,
+        color: petalColors[Math.floor(Math.random() * petalColors.length)],
+        speed: 0.4 + Math.random() * 1,
+        drift: (Math.random() - 0.5) * 0.5,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.03,
+        opacity: 0.3 + Math.random() * 0.6,
+      }));
+
+      function drawPetal(p) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.r, p.r * 1.7, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Draw a mini rose on canvas
+      function drawRose(ctx, x, y, size, rot, opacity) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(rot);
+        ctx.globalAlpha = opacity;
+
+        // stem
+        ctx.strokeStyle = "#7a9e6e";
+        ctx.lineWidth = size * 0.12;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(0, size * 0.4);
+        ctx.quadraticCurveTo(size * 0.1, size * 0.7, 0, size);
+        ctx.stroke();
+
+        // leaf
+        ctx.fillStyle = "#8fb87e";
+        ctx.beginPath();
+        ctx.ellipse(
+          size * 0.18,
+          size * 0.65,
+          size * 0.18,
+          size * 0.08,
+          Math.PI / 4,
+          0,
+          Math.PI * 2,
+        );
+        ctx.fill();
+
+        // outer petals
+        const outerPetals = [
+          { angle: 0, color: "#e8899a" },
+          { angle: 72, color: "#df7a8e" },
+          { angle: 144, color: "#e8899a" },
+          { angle: 216, color: "#df7a8e" },
+          { angle: 288, color: "#e8899a" },
+        ];
+        for (const op of outerPetals) {
+          ctx.save();
+          ctx.rotate((op.angle * Math.PI) / 180);
+          ctx.fillStyle = op.color;
+          ctx.beginPath();
+          ctx.ellipse(
+            0,
+            -size * 0.28,
+            size * 0.15,
+            size * 0.22,
+            0,
+            0,
+            Math.PI * 2,
+          );
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // inner petals
+        const innerPetals = [
+          { angle: 36, color: "#f2a7b8" },
+          { angle: 108, color: "#eda0b2" },
+          { angle: 180, color: "#f2a7b8" },
+          { angle: 252, color: "#eda0b2" },
+          { angle: 324, color: "#f2a7b8" },
+        ];
+        for (const ip of innerPetals) {
+          ctx.save();
+          ctx.rotate((ip.angle * Math.PI) / 180);
+          ctx.fillStyle = ip.color;
+          ctx.beginPath();
+          ctx.ellipse(
+            0,
+            -size * 0.18,
+            size * 0.1,
+            size * 0.15,
+            0,
+            0,
+            Math.PI * 2,
+          );
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // centre
+        ctx.fillStyle = "#f7cdd8";
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.1, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#fce8ef";
+        ctx.beginPath();
+        ctx.arc(0, 0, size * 0.06, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      // Falling roses data
+      const roses = Array.from({ length: 12 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        size: 18 + Math.random() * 22,
+        speed: 0.3 + Math.random() * 0.6,
+        drift: (Math.random() - 0.5) * 0.4,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.015,
+        opacity: 0.55 + Math.random() * 0.4,
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const p of petals) {
+          p.y += p.speed;
+          p.x += p.drift;
+          p.rot += p.rotSpeed;
+          if (p.y > canvas.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * canvas.width;
+          }
+          drawPetal(p);
+        }
+
+        for (const r of roses) {
+          r.y += r.speed;
+          r.x += r.drift;
+          r.rot += r.rotSpeed;
+          if (r.y > canvas.height + 60) {
+            r.y = -60;
+            r.x = Math.random() * canvas.width;
+          }
+          drawRose(ctx, r.x, r.y, r.size, r.rot, r.opacity);
+        }
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      // Sparkles
+      const sparkleEmojis = ["✨", "⭐", "💫", "🌟"];
+      function createSparkle() {
+        const el = document.createElement("div");
+        el.className = "sparkle";
+        el.textContent =
+          sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.bottom = "-2rem";
+        const dur = 5 + Math.random() * 6;
+        el.style.animationDuration = dur + "s";
+        el.style.animationDelay = Math.random() * 4 + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), (dur + 4) * 1000);
+      }
+      setInterval(createSparkle, 600);
+
+      // Click burst
+      document.addEventListener("click", (e) => {
+        for (let i = 0; i < 8; i++) {
+          const dot = document.createElement("div");
+          dot.style.cssText = `
+          position:fixed; left:${e.clientX}px; top:${e.clientY}px;
+          width:8px; height:8px; border-radius:50%;
+          background:${petalColors[Math.floor(Math.random() * petalColors.length)]};
+          pointer-events:none; z-index:9998;
+          animation: burst 0.8s ease-out forwards;
+        `;
+          const angle = (i / 8) * Math.PI * 2;
+          const dist = 30 + Math.random() * 40;
+          dot.style.setProperty("--tx", Math.cos(angle) * dist + "px");
+          dot.style.setProperty("--ty", Math.sin(angle) * dist + "px");
+          document.body.appendChild(dot);
+          setTimeout(() => dot.remove(), 900);
+        }
+      });
+
+      const style = document.createElement("style");
+      style.textContent = `
+      @keyframes burst {
+        0% { opacity:1; transform: translate(0,0) scale(1); }
+        100% { opacity:0; transform: translate(var(--tx),var(--ty)) scale(0); }
+      }
+    `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
